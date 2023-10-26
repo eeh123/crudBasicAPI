@@ -26,10 +26,10 @@ public class ProductImages {
     @JsonIgnore
     private Products product;
 
-    @ManyToOne
-    @JoinColumn(name = "image_id", referencedColumnName = "id")
-    @JsonIgnore
-    private Images image;
+//    @ManyToOne
+//    @JoinColumn(name = "image_id", referencedColumnName = "id")
+//    @JsonIgnore
+//    private Images image;
 
 }
 

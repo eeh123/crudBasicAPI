@@ -31,12 +31,12 @@ public class Orders {
     @UpdateTimestamp
     private LocalDateTime date_modified;
 
-    @OneToMany(mappedBy = "orders", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<OrderItems> orderItems;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private Users user;
+//    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private Set<OrderItems> orderItems;
+//
+//    @ManyToOne
+//    @JoinColumn(name = "user_id", referencedColumnName = "id")
+//    private Users user;
 
 }
 

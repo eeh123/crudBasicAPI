@@ -37,7 +37,7 @@ public class Products {
     @UpdateTimestamp
     private LocalDateTime date_modified;
 
-    @OneToMany(mappedBy = "products", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Sizes> sizes;
 
 //    @OneToMany(mappedBy = "products", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

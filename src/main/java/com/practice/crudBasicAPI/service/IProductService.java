@@ -1,10 +1,13 @@
 package com.practice.crudBasicAPI.service;
 
 import com.practice.crudBasicAPI.dto.*;
-import com.practice.crudBasicAPI.entity.Products;
+import com.practice.crudBasicAPI.repository.ProductRepository;
+import com.practice.crudBasicAPI.service.implement.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
-
+@Component
 public interface IProductService {
 
 //------------Products------------

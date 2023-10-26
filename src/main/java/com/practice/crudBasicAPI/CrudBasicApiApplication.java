@@ -1,12 +1,15 @@
 package com.practice.crudBasicAPI;
 
+import com.practice.crudBasicAPI.controller.ProductController;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
+//@ComponentScan(basePackageClasses = ProductController.class)
 public class CrudBasicApiApplication {
 
 	@Bean

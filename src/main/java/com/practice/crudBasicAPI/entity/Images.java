@@ -24,7 +24,7 @@ public class Images {
     private String downloadUri;
     private long size;
 
-    @OneToMany(mappedBy = "images", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<ProductImages> productImages;
+//    @OneToMany(mappedBy = "image", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private Set<ProductImages> productImages;
 
 }

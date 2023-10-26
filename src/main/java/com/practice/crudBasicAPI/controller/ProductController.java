@@ -1,7 +1,6 @@
 package com.practice.crudBasicAPI.controller;
 
 import com.practice.crudBasicAPI.dto.*;
-import com.practice.crudBasicAPI.service.ILineService;
 import com.practice.crudBasicAPI.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,7 +19,7 @@ public class ProductController {
         this.iProductService = iProductService;
     }
 
-    //---------------------------------Lines---------------------------------
+    //---------------------------------Products---------------------------------
     @GetMapping("/getProducts") //[WORKING]
     public ResponseEntity<List<ProductDisplayDTO>> getAllProducts(){
         List<ProductDisplayDTO> products = iProductService.getAllProducts();
@@ -29,6 +28,8 @@ public class ProductController {
         }
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
+
+    // GET ALL PRODUCTS THAT ARE ACTIVE
     @GetMapping("/getProduct/{id}") //[WORKING]
     public ResponseEntity<ProductDisplayDTO> getProductById(@PathVariable Integer id){
         ProductDisplayDTO product = iProductService.getProductById(id);

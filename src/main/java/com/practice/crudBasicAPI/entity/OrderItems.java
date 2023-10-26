@@ -22,15 +22,15 @@ public class OrderItems {
     private int qty;
     private double subtotal;
 
-    @ManyToOne
-    @JoinColumn(name = "order_id", referencedColumnName = "id")
-    @JsonIgnore
-    private Orders order;
-
-
-    @ManyToOne
-    @JoinColumn(name = "product_id", referencedColumnName = "id")
-    @JsonIgnore
-    private Products product;
+//    @ManyToOne
+//    @JoinColumn(name = "order_id", referencedColumnName = "id")
+//    @JsonIgnore
+//    private Orders order;
+//
+//
+//    @ManyToOne
+//    @JoinColumn(name = "product_id", referencedColumnName = "id")
+//    @JsonIgnore
+//    private Products product;
 
 }

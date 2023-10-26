@@ -11,5 +11,4 @@ import java.util.List;
 @Repository
 @Transactional
 public interface OrderItemRepository extends JpaRepository<OrderItems,Integer> {
-    List<Ngrecords> findAllNgrecordsByChecklistsId(int id);
 }

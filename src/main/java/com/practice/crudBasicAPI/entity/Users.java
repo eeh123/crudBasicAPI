@@ -40,8 +40,8 @@ public class Users {
     @UpdateTimestamp
     private LocalDateTime date_modified;
 
-    @OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<Orders> orders;
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private Set<Orders> orders;
 
 }
 enum Roles {
