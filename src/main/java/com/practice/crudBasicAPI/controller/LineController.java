@@ -1,7 +1,7 @@
 package com.practice.crudBasicAPI.controller;
 
-import com.practice.sb_finalActivity.dto.*;
-import com.practice.sb_finalActivity.service.ILineService;
+import com.practice.crudBasicAPI.dto.*;
+import com.practice.crudBasicAPI.service.ILineService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

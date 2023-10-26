@@ -1,6 +1,6 @@
 package com.practice.crudBasicAPI.repository;
 
-import com.practice.sb_finalActivity.entity.Ngrecords;
+import com.practice.crudBasicAPI.entity.Ngrecords;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

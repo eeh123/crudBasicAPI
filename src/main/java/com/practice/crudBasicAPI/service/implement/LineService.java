@@ -1,16 +1,10 @@
 package com.practice.crudBasicAPI.service.implement;
 
-import com.practice.sb_finalActivity.dto.*;
-import com.practice.sb_finalActivity.entity.Checklists;
-import com.practice.sb_finalActivity.entity.Lines;
-import com.practice.sb_finalActivity.entity.Ngrecords;
-import com.practice.sb_finalActivity.entity.Stations;
-import com.practice.sb_finalActivity.exceptionhandler.ResourceNotFoundException;
-import com.practice.sb_finalActivity.repository.ChecklistRepository;
-import com.practice.sb_finalActivity.repository.LineRepository;
-import com.practice.sb_finalActivity.repository.NgrecordRepository;
-import com.practice.sb_finalActivity.repository.StationRepository;
-import com.practice.sb_finalActivity.service.ILineService;
+import com.practice.crudBasicAPI.dto.*;
+import com.practice.crudBasicAPI.entity.*;
+import com.practice.crudBasicAPI.exceptionhandler.ResourceNotFoundException;
+import com.practice.crudBasicAPI.repository.*;
+import com.practice.crudBasicAPI.service.ILineService;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

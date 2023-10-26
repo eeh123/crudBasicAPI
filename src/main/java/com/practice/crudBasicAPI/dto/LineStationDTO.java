@@ -1,6 +1,6 @@
 package com.practice.crudBasicAPI.dto;
 
-import com.practice.sb_finalActivity.entity.Stations;
+import com.practice.crudBasicAPI.entity.Stations;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

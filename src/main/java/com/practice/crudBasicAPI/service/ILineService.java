@@ -1,6 +1,6 @@
 package com.practice.crudBasicAPI.service;
 
-import com.practice.sb_finalActivity.dto.*;
+import com.practice.crudBasicAPI.dto.*;
 
 import java.util.List;
 public interface ILineService {
