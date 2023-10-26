@@ -6,15 +6,17 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class LineDisplayDTO {
-    @JsonIgnore
+public class ProductDisplayDTO {
+
     private int id;
+    private String name;
+    private String description;
+    private double price;
+    private int stockQty;
     private int status;
-    private String line_name, line_status;
 
 }
