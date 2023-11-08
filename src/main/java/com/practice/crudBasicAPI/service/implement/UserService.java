@@ -76,8 +76,8 @@ public class UserService implements IUserService {
         Optional<Users> existingUser = userRepository.checkUserCred(userCred.getEmail(), userCred.getPassword());
         if(existingUser.isPresent()) {
             Users u = existingUser.get();
-            userRegDTO = modelMapper.map(u, UserRegDTO.class);
-            updateUser(u.getId(),userRegDTO);
+//            userRegDTO = modelMapper.map(u, UserRegDTO.class);
+//            updateUser(u.getId(),userRegDTO);
             userDetailsDTO = modelMapper.map(u, UserDetailsDTO.class);
             return userDetailsDTO;
         }
@@ -95,7 +95,7 @@ public class UserService implements IUserService {
         u.setPassword(userDetails.getPassword());
         u.setFullname(userDetails.getFullname());
         u.setPhoneNumber(userDetails.getPhoneNumber());
-        u.setLoggedIn(false);
+//        u.setLoggedIn(false);
         var userReg = userRepository.save(u);
         return modelMapper.map(userReg, UserDetailsDTO.class);
     }
@@ -110,7 +110,7 @@ public class UserService implements IUserService {
             userDetails.setPassword(udUser.getPassword());
             userDetails.setFullname(udUser.getFullname());
             userDetails.setPhoneNumber(udUser.getPhoneNumber());
-            userDetails.setLoggedIn(udUser.getIsLoggedIn());
+//            userDetails.setLoggedIn(udUser.getIsLoggedIn());
             userRepository.save(userDetails);
             userDetailsDTO = modelMapper.map(userDetails, UserDetailsDTO.class);
             return userDetailsDTO;

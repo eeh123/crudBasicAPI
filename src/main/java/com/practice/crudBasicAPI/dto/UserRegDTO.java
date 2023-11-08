@@ -14,8 +14,8 @@ public class UserRegDTO {
     private String password;
     private String fullname;
     private String phoneNumber;
-    private boolean isLoggedIn;
-    public boolean getIsLoggedIn() {
-        return isLoggedIn;
-    }
+//    private boolean isLoggedIn;
+//    public boolean getIsLoggedIn() {
+//        return isLoggedIn;
+//    }
 }

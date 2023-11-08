@@ -12,10 +12,10 @@ import lombok.Setter;
 public class UserCredentialsDTO {
     private String email;
     private String password;
-
-    public boolean getIsLoggedIn() {
-        return isLoggedIn;
-    }
-
-    private boolean isLoggedIn;
+//
+//    public boolean getIsLoggedIn() {
+//        return isLoggedIn;
+//    }
+//
+//    private boolean isLoggedIn;
 }
