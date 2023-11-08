@@ -28,8 +28,14 @@ public class ProductController {
         }
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
-
-    // GET ALL PRODUCTS THAT ARE ACTIVE
+    @GetMapping("/getActiveProducts") //[WORKING]
+    public ResponseEntity<List<ProductDisplayDTO>> getActiveProducts(){
+        List<ProductDisplayDTO> products = iProductService.getActiveProducts();
+        if (products.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(products, HttpStatus.OK);
+    }
     @GetMapping("/getProduct/{id}") //[WORKING]
     public ResponseEntity<ProductDisplayDTO> getProductById(@PathVariable Integer id){
         ProductDisplayDTO product = iProductService.getProductById(id);

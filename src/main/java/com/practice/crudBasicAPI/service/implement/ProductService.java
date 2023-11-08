@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-@Slf4j //used for logging
+@Slf4j
 @Service
 public class ProductService implements IProductService {
 
@@ -51,6 +51,18 @@ public class ProductService implements IProductService {
             allProducts.add(productDisplayDTO);
         }
         return allProducts;
+    }
+
+    @Override //[WORKING]
+    public List<ProductDisplayDTO> getActiveProducts() {
+        ProductDisplayDTO productDisplayDTO = new ProductDisplayDTO();
+        List<ProductDisplayDTO> allActiveProducts = new ArrayList<>();
+        List<Products> activeProducts = new ArrayList<>(productRepository.getActiveProducts());
+        for (Products p : activeProducts) {
+            productDisplayDTO = modelMapper.map(p, ProductDisplayDTO.class);
+            allActiveProducts.add(productDisplayDTO);
+        }
+        return allActiveProducts;
     }
     @Override //[WORKING]
     public ProductDisplayDTO getProductById(int id) {
@@ -112,11 +124,7 @@ public class ProductService implements IProductService {
     }
     @Override //[WORKING]
     public ProductDisplayDTO softDeleteProduct(int id){
-        //cascades soft delete till ngrecords due to parent-child relationship
         productRepository.softDeleteProduct(id);
-        //works only if every parent has a child record, otherwise wont cascade properly
-        //every station must have at least one checklist and every checklist of that station
-        //must have at least one ngrecord for the query to work as intended
         return getProductById(id);
     }
 

@@ -1,0 +1,66 @@
+package com.practice.crudBasicAPI.controller;
+
+import com.practice.crudBasicAPI.dto.*;
+import com.practice.crudBasicAPI.service.IUserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+public class UserController {
+
+    @Autowired
+    private IUserService iUserService;
+
+    public UserController(IUserService iUserService) {
+        super();
+        this.iUserService = iUserService;
+    }
+    @GetMapping("/getUsers") //[WORKING]
+    public ResponseEntity<List<UserDetailsDTO>> getAllUsers(){
+        List<UserDetailsDTO> users = iUserService.getAllUsers();
+        if (users.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(users, HttpStatus.OK);
+    }
+//    @GetMapping("/getActiveUsers") //[WORKING]
+//    public ResponseEntity<List<UserDetailsDTO>> getActiveProducts(){
+//        List<UserDetailsDTO> users = iUserService.getActiveUsers();
+//        if (users.isEmpty()) {
+//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//        }
+//        return new ResponseEntity<>(users, HttpStatus.OK);
+//    }
+    @GetMapping("/getUser/{id}") //[WORKING]
+    public ResponseEntity<UserDetailsDTO> getUserById(@PathVariable Integer id){
+        UserDetailsDTO user = iUserService.getUserById(id);
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+    @GetMapping("/login") //[WORKING]
+    public ResponseEntity<UserDetailsDTO> loginUser(@RequestBody UserCredentialsDTO userCred){
+        UserDetailsDTO user = iUserService.loginUser(userCred);
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+    @PostMapping("/addUser") //[WORKING]
+    public ResponseEntity<UserDetailsDTO> addNewUser(@RequestBody UserRegDTO user){
+        return new ResponseEntity<UserDetailsDTO>(iUserService.addUser(user), HttpStatus.CREATED);
+    }
+    @PutMapping("/updateUser/{id}") //[WORKING]
+    public ResponseEntity<UserDetailsDTO> updateUser(@PathVariable Integer id, @RequestBody UserRegDTO udUser){
+        UserDetailsDTO update_user = iUserService.updateUser(id, udUser);
+        return new ResponseEntity<>(update_user, HttpStatus.OK);
+    }
+//    @PatchMapping("/patchUserEmail/{id}") //[WORKING]
+//    public ResponseEntity<UserDetailsDTO> patchUserEmail(@PathVariable Integer id, @RequestBody PatchEmailDTO pEmail){
+//        UserDetailsDTO patch_email = iUserService.patchUserEmail(id, pEmail);
+//        return new ResponseEntity<>(patch_email, HttpStatus.OK);
+//    }
+    @PutMapping("/softDeleteUser/{id}") //[WORKING]
+    public ResponseEntity<UserDetailsDTO> softDeleteUser(@PathVariable Integer id){
+        return new ResponseEntity<>(iUserService.softDeleteUser(id), HttpStatus.OK);
+    }
+}

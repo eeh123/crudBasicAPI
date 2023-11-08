@@ -9,7 +9,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
-//@ComponentScan(basePackageClasses = ProductController.class)
 public class CrudBasicApiApplication {
 
 	@Bean

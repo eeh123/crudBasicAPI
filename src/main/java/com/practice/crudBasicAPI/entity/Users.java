@@ -24,18 +24,20 @@ public class Users {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String username;
-    private String password;
+//    @Column(unique=true)
+//    private String username;
+    @Column(unique=true)
     private String email;
+    private String password;
     private String fname;
     private String lname;
-    private String mname;
-    private String phoneNumber;
-    private Roles role;
+//    private String mname;
+//    private String phoneNumber;
+//    private Roles role;
 
     @JsonIgnore
     @CreationTimestamp
-    private LocalDateTime date_created;
+    private LocalDateTime date_registered;
     @JsonIgnore
     @UpdateTimestamp
     private LocalDateTime date_modified;
@@ -44,6 +46,6 @@ public class Users {
 //    private Set<Orders> orders;
 
 }
-enum Roles {
-    admin, user;
-}
+//enum Roles {
+//    admin, user;
+//}
