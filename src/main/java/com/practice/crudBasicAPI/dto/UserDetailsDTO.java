@@ -17,5 +17,6 @@ public class UserDetailsDTO {
     private String password;
     private String fullname;
     private String phoneNumber;
+    private boolean isLoggedIn;
     private LocalDateTime date_registered;
 }
