@@ -29,10 +29,10 @@ public class Users {
     @Column(unique=true)
     private String email;
     private String password;
-    private String fname;
-    private String lname;
+    private String fullname;
+//    private String lname;
 //    private String mname;
-//    private String phoneNumber;
+    private String phoneNumber;
 //    private Roles role;
 
     @JsonIgnore
