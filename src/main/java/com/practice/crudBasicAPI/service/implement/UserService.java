@@ -72,9 +72,13 @@ public class UserService implements IUserService {
     @Override
     public UserDetailsDTO loginUser(UserCredentialsDTO userCred) {
         UserDetailsDTO userDetailsDTO = new UserDetailsDTO();
+        UserRegDTO userRegDTO = new UserRegDTO();
         Optional<Users> existingUser = userRepository.checkUserCred(userCred.getEmail(), userCred.getPassword());
         if(existingUser.isPresent()) {
-            userDetailsDTO = modelMapper.map(existingUser.get(), UserDetailsDTO.class);
+            Users u = existingUser.get();
+            userRegDTO = modelMapper.map(u, UserRegDTO.class);
+            updateUser(u.getId(),userRegDTO);
+            userDetailsDTO = modelMapper.map(u, UserDetailsDTO.class);
             return userDetailsDTO;
         }
         throw new ResourceNotFoundException("Email or password is incorrect");
@@ -91,6 +95,7 @@ public class UserService implements IUserService {
         u.setPassword(userDetails.getPassword());
         u.setFullname(userDetails.getFullname());
         u.setPhoneNumber(userDetails.getPhoneNumber());
+        u.setLoggedIn(false);
         var userReg = userRepository.save(u);
         return modelMapper.map(userReg, UserDetailsDTO.class);
     }
@@ -103,8 +108,9 @@ public class UserService implements IUserService {
             Users userDetails = existingUser.get();
             userDetails.setEmail(udUser.getEmail());
             userDetails.setPassword(udUser.getPassword());
-            userDetails.setFullname(userDetails.getFullname());
-            userDetails.setPhoneNumber(userDetails.getPhoneNumber());
+            userDetails.setFullname(udUser.getFullname());
+            userDetails.setPhoneNumber(udUser.getPhoneNumber());
+            userDetails.setLoggedIn(udUser.getIsLoggedIn());
             userRepository.save(userDetails);
             userDetailsDTO = modelMapper.map(userDetails, UserDetailsDTO.class);
             return userDetailsDTO;

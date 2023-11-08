@@ -30,6 +30,7 @@ public class Users {
     private String email;
     private String password;
     private String fullname;
+    private boolean isLoggedIn;
 //    private String lname;
 //    private String mname;
     private String phoneNumber;
