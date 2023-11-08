@@ -34,3 +34,4 @@ public interface UserRepository extends JpaRepository<Users, Integer> {
             nativeQuery = true)
     void softDeleteUser(int id);
 }
+

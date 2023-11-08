@@ -138,4 +138,15 @@ public class UserService implements IUserService {
         userRepository.softDeleteUser(id);
         return getUserById(id);
     }
+
+    @Override
+    public void hardDeleteUser(int id) {
+//        userRepository.hardDeleteUser(id);
+        Optional<Users> user = userRepository.findById(id);
+        if (user.isPresent()) {
+            Users u = user.get();
+            userRepository.delete(u);
+        }
+
+    }
 }

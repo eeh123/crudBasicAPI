@@ -45,7 +45,10 @@ public class Users {
 //    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 //    private Set<Orders> orders;
 
+    // To delete the user by Id
+    private int status;
+
 }
 //enum Roles {
 //    admin, user;
-//}
+//

@@ -1,6 +1,7 @@
 package com.practice.crudBasicAPI.controller;
 
 import com.practice.crudBasicAPI.dto.*;
+import com.practice.crudBasicAPI.entity.Users;
 import com.practice.crudBasicAPI.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -62,5 +63,12 @@ public class UserController {
     @PutMapping("/softDeleteUser/{id}") //[NOT YET WORKING]
     public ResponseEntity<UserDetailsDTO> softDeleteUser(@PathVariable Integer id){
         return new ResponseEntity<>(iUserService.softDeleteUser(id), HttpStatus.OK);
+    }
+
+    @DeleteMapping ("/hardDeleteUser/{id}")
+    public ResponseEntity<UserDetailsDTO> hardDeleteUser(@PathVariable Integer id){
+        iUserService.hardDeleteUser(id);
+
+        return new ResponseEntity<>( HttpStatus.OK);
     }
 }
