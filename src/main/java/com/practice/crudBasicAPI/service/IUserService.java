@@ -16,6 +16,7 @@ public interface IUserService {
     UserDetailsDTO updateUser(int id, UserRegDTO udUser);
 //    UserDetailsDTO patchUserEmail(int id, PatchEmailDTO patchEmailDTO);
     UserDetailsDTO softDeleteUser(int id);
+    public void logoutUser(String email);
 
     //Hard Delete User
     void hardDeleteUser(int id);

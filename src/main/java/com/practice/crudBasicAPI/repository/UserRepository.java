@@ -33,5 +33,10 @@ public interface UserRepository extends JpaRepository<Users, Integer> {
     @Query(value = "UPDATE tbl_users SET status = 0 WHERE id = ?1",
             nativeQuery = true)
     void softDeleteUser(int id);
+
+    @Modifying
+    @Query(value = "UPDATE tbl_users SET isLoggedIn = ?1 WHERE email = ?2",
+            nativeQuery = true)
+    void setIsLoggedIn(boolean isLoggedIn, String email);
 }
 

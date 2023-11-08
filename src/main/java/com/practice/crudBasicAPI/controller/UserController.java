@@ -46,6 +46,12 @@ public class UserController {
         UserDetailsDTO user = iUserService.loginUser(userCred);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
+    @PostMapping("/logout") //[WORKING]
+    public ResponseEntity<String> logoutUser(@PathVariable String email){
+        String message = "success";
+        iUserService.logoutUser(email);
+        return new ResponseEntity<>(message, HttpStatus.OK);
+    }
     @PostMapping("/register") //[WORKING]
     public ResponseEntity<UserDetailsDTO> registerUser(@RequestBody UserRegDTO user){
         return new ResponseEntity<UserDetailsDTO>(iUserService.registerUser(user), HttpStatus.CREATED);

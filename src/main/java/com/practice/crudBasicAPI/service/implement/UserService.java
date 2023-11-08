@@ -76,12 +76,20 @@ public class UserService implements IUserService {
         Optional<Users> existingUser = userRepository.checkUserCred(userCred.getEmail(), userCred.getPassword());
         if(existingUser.isPresent()) {
             Users u = existingUser.get();
-//            userRegDTO = modelMapper.map(u, UserRegDTO.class);
-//            updateUser(u.getId(),userRegDTO);
+            userRepository.setIsLoggedIn(true, u.getEmail());
             userDetailsDTO = modelMapper.map(u, UserDetailsDTO.class);
             return userDetailsDTO;
         }
         throw new ResourceNotFoundException("Email or password is incorrect");
+    }
+
+    @Override
+    public void logoutUser(String email) {
+        Optional<Users> existingUser = userRepository.findByEmail(email);
+        if(existingUser.isPresent()) {
+            userRepository.setIsLoggedIn(false, email);
+        }
+        throw new ResourceNotFoundException("Email not found");
     }
 
     @Override
@@ -95,7 +103,7 @@ public class UserService implements IUserService {
         u.setPassword(userDetails.getPassword());
         u.setFullname(userDetails.getFullname());
         u.setPhoneNumber(userDetails.getPhoneNumber());
-//        u.setLoggedIn(false);
+        u.setLoggedIn(false);
         var userReg = userRepository.save(u);
         return modelMapper.map(userReg, UserDetailsDTO.class);
     }
@@ -110,34 +118,13 @@ public class UserService implements IUserService {
             userDetails.setPassword(udUser.getPassword());
             userDetails.setFullname(udUser.getFullname());
             userDetails.setPhoneNumber(udUser.getPhoneNumber());
-//            userDetails.setLoggedIn(udUser.getIsLoggedIn());
+            userDetails.setLoggedIn(true);
             userRepository.save(userDetails);
             userDetailsDTO = modelMapper.map(userDetails, UserDetailsDTO.class);
             return userDetailsDTO;
         }
         throw new ResourceNotFoundException("No existing user with id: " + id + " found");
     }
-
-//---------------------------------Patching---------------------------------
-
-//    public Users applyPatch(JsonPatch patch, Users user) throws JsonPatchException,
-//            JsonProcessingException {
-//
-//    }
-
-//    @Override
-//    public UserDetailsDTO patchUserEmail(int id, PatchEmailDTO patchEmailDTO) {
-//        UserDetailsDTO userDetailsDTO = new UserDetailsDTO();
-//        Optional<Users> existingUser = userRepository.findById(id);
-//        if (existingUser.isPresent()){
-//            Users userDetails = existingUser.get();
-//            userDetails.setEmail(patchEmailDTO.getEmail());
-//            userRepository.save(userDetails);
-//            userDetailsDTO = modelMapper.map(userDetails, UserDetailsDTO.class);
-//            return userDetailsDTO;
-//        }
-//        throw new ResourceNotFoundException("No existing user with id: " + id + " found");
-//    }
 
     @Override
     public UserDetailsDTO softDeleteUser(int id) {

@@ -17,5 +17,5 @@ public class UserCredentialsDTO {
 //        return isLoggedIn;
 //    }
 //
-//    private boolean isLoggedIn;
+    private boolean isLoggedIn;
 }
