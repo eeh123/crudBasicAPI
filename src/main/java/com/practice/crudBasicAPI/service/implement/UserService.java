@@ -144,8 +144,8 @@ public class UserService implements IUserService {
 //        userRepository.hardDeleteUser(id);
         Optional<Users> user = userRepository.findById(id);
         if (user.isPresent()) {
-            Users u = user.get();
-            userRepository.delete(u);
+            Users userDelete = user.get();
+            userRepository.delete(userDelete);
         }
 
     }
