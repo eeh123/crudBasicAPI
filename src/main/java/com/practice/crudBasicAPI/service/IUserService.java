@@ -12,7 +12,7 @@ public interface IUserService {
     List<UserDetailsDTO> getActiveUsers();
     UserDetailsDTO getUserById(int id);
     UserDetailsDTO loginUser(UserCredentialsDTO userCred);
-    UserDetailsDTO addUser(UserRegDTO user);
+    UserDetailsDTO registerUser(UserRegDTO userDetails);
     UserDetailsDTO updateUser(int id, UserRegDTO udUser);
 //    UserDetailsDTO patchUserEmail(int id, PatchEmailDTO patchEmailDTO);
     UserDetailsDTO softDeleteUser(int id);

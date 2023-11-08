@@ -6,6 +6,7 @@ import com.practice.crudBasicAPI.dto.UserCredentialsDTO;
 import com.practice.crudBasicAPI.dto.UserDetailsDTO;
 import com.practice.crudBasicAPI.dto.UserRegDTO;
 import com.practice.crudBasicAPI.entity.Users;
+import com.practice.crudBasicAPI.exceptionhandler.ConflictException;
 import com.practice.crudBasicAPI.exceptionhandler.ResourceNotFoundException;
 import com.practice.crudBasicAPI.repository.UserRepository;
 import com.practice.crudBasicAPI.service.IUserService;
@@ -80,15 +81,18 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public UserDetailsDTO addUser(UserRegDTO user) {
+    public UserDetailsDTO registerUser(UserRegDTO userDetails) {
+        Optional<Users> existingUser = userRepository.findByEmail(userDetails.getEmail());
+        if(existingUser.isPresent()) {
+            throw new ConflictException("Email already exists!");
+        }
         Users u = new Users();
-        u.setEmail(user.getEmail());
-        u.setPassword(user.getPassword());
-        u.setFname(user.getFname());
-        u.setLname(user.getLname());
-        var userDetails = userRepository.save(u);
-        UserDetailsDTO userDetailsDTO = modelMapper.map(userDetails, UserDetailsDTO.class);
-        return userDetailsDTO;
+        u.setEmail(userDetails.getEmail());
+        u.setPassword(userDetails.getPassword());
+        u.setFname(userDetails.getFname());
+        u.setLname(userDetails.getLname());
+        var userReg = userRepository.save(u);
+        return modelMapper.map(userReg, UserDetailsDTO.class);
     }
 
     @Override

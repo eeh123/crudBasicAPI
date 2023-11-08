@@ -23,9 +23,11 @@ public interface UserRepository extends JpaRepository<Users, Integer> {
             nativeQuery = true)
     Optional<Users> checkUserCred(String email, String password);
 
-    @Query(value = "SELECT * FROM tbl_users WHERE email = ?1",
-            nativeQuery = true)
-    Optional<Users> checkEmail(String email);
+//    @Query(value = "SELECT * FROM tbl_users WHERE email = ?1",
+//            nativeQuery = true)
+//    Optional<Users> checkEmail(String email);
+
+    Optional<Users> findByEmail(String email);
 
     @Modifying
     @Query(value = "UPDATE tbl_users SET status = 0 WHERE id = ?1",

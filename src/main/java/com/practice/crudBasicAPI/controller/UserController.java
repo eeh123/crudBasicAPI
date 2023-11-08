@@ -45,9 +45,9 @@ public class UserController {
         UserDetailsDTO user = iUserService.loginUser(userCred);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
-    @PostMapping("/addUser") //[WORKING]
+    @PostMapping("/register") //[WORKING]
     public ResponseEntity<UserDetailsDTO> addNewUser(@RequestBody UserRegDTO user){
-        return new ResponseEntity<UserDetailsDTO>(iUserService.addUser(user), HttpStatus.CREATED);
+        return new ResponseEntity<UserDetailsDTO>(iUserService.registerUser(user), HttpStatus.CREATED);
     }
     @PutMapping("/updateUser/{id}") //[WORKING]
     public ResponseEntity<UserDetailsDTO> updateUser(@PathVariable Integer id, @RequestBody UserRegDTO udUser){
