@@ -59,7 +59,7 @@ public class UserController {
 //        UserDetailsDTO patch_email = iUserService.patchUserEmail(id, pEmail);
 //        return new ResponseEntity<>(patch_email, HttpStatus.OK);
 //    }
-    @PutMapping("/softDeleteUser/{id}") //[WORKING]
+    @PutMapping("/softDeleteUser/{id}") //[NOT YET WORKING]
     public ResponseEntity<UserDetailsDTO> softDeleteUser(@PathVariable Integer id){
         return new ResponseEntity<>(iUserService.softDeleteUser(id), HttpStatus.OK);
     }
