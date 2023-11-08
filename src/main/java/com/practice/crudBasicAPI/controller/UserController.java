@@ -41,7 +41,7 @@ public class UserController {
         UserDetailsDTO user = iUserService.getUserById(id);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
-    @GetMapping("/login") //[WORKING]
+    @PostMapping("/login") //[WORKING]
     public ResponseEntity<UserDetailsDTO> loginUser(@RequestBody UserCredentialsDTO userCred){
         UserDetailsDTO user = iUserService.loginUser(userCred);
         return new ResponseEntity<>(user, HttpStatus.OK);
