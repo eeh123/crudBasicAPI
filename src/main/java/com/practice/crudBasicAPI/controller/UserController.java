@@ -69,6 +69,6 @@ public class UserController {
     public ResponseEntity<UserDetailsDTO> hardDeleteUser(@PathVariable Integer id){
         iUserService.hardDeleteUser(id);
 
-        return new ResponseEntity<>( HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
