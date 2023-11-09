@@ -36,7 +36,7 @@ public class UserController {
 //        return new ResponseEntity<>(users, HttpStatus.OK);
 //    }
     @GetMapping("/getUser/{id}") //[WORKING]
-    public ResponseEntity<UserDetailsDTO> getUserById(@PathVariable Integer id){
+    public ResponseEntity<UserDetailsDTO> getUserById(@PathVariable int id){
         UserDetailsDTO user = iUserService.getUserById(id);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
@@ -67,5 +67,12 @@ public class UserController {
     @PutMapping("/softDeleteUser/{id}") //[WORKING]
     public ResponseEntity<UserDetailsDTO> softDeleteUser(@PathVariable Integer id){
         return new ResponseEntity<>(iUserService.softDeleteUser(id), HttpStatus.OK);
+    }
+
+    @DeleteMapping ("/hardDeleteUser/{id}") //[WORKING]
+    public ResponseEntity<UserDetailsDTO> hardDeleteUser(@PathVariable Integer id){
+        iUserService.hardDeleteUser(id);
+
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

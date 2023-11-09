@@ -34,6 +34,9 @@ public class UserService implements IUserService {
     @Autowired
     private ModelMapper modelMapper;
 
+    @Autowired
+//    private PasswordEncoder passwordEncoder;
+
     @Override
     public List<UserDetailsDTO> getAllUsers() {
         UserDetailsDTO userDetailsDTO = new UserDetailsDTO();
@@ -148,5 +151,16 @@ public class UserService implements IUserService {
     public UserDetailsDTO softDeleteUser(int id) {
         userRepository.softDeleteUser(id);
         return getUserById(id);
+    }
+
+    @Override
+    public void hardDeleteUser(int id) {
+//        userRepository.hardDeleteUser(id);
+        Optional<Users> user = userRepository.findById(id);
+        if (user.isPresent()) {
+            Users userDelete = user.get();
+            userRepository.delete(userDelete);
+        }
+
     }
 }

@@ -17,4 +17,5 @@ public interface IUserService {
     UserDetailsDTO updateUser(int id, UserRegDTO udUser);
 //    UserDetailsDTO patchUserEmail(int id, PatchEmailDTO patchEmailDTO);
     UserDetailsDTO softDeleteUser(int id);
+    void hardDeleteUser(int id);
 }
