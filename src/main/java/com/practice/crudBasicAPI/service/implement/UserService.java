@@ -70,6 +70,17 @@ public class UserService implements IUserService {
     }
 
     @Override
+    public UserDetailsDTO getUserByEmail(String email) {
+        UserDetailsDTO userDetailsDTO = new UserDetailsDTO();
+        Optional<Users> existingUser = userRepository.findByEmail(email);
+        if(existingUser.isPresent()) {
+            userDetailsDTO = modelMapper.map(existingUser.get(), UserDetailsDTO.class);
+            return userDetailsDTO;
+        }
+        throw new ResourceNotFoundException("No existing user with email: " + email + " found");
+    }
+
+    @Override
     public UserDetailsDTO loginUser(UserCredentialsDTO userCred) {
         UserDetailsDTO userDetailsDTO = new UserDetailsDTO();
         Optional<Users> existingUser = userRepository.checkUserCred(userCred.getEmail(), userCred.getPassword());

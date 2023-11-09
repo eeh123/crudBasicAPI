@@ -11,6 +11,7 @@ public interface IUserService {
     List<UserDetailsDTO> getAllUsers();
     List<UserDetailsDTO> getActiveUsers();
     UserDetailsDTO getUserById(int id);
+    UserDetailsDTO getUserByEmail(String email);
     UserDetailsDTO loginUser(UserCredentialsDTO userCred);
     UserDetailsDTO registerUser(UserRegDTO userDetails);
     UserDetailsDTO updateUser(int id, UserRegDTO udUser);

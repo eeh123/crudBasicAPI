@@ -40,7 +40,12 @@ public class UserController {
         UserDetailsDTO user = iUserService.getUserById(id);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
-    @GetMapping("/login") //[WORKING]
+    @GetMapping("/getUserByEmail") //[WORKING]
+    public ResponseEntity<UserDetailsDTO> getUserByEmail(@PathVariable String email){
+        UserDetailsDTO user = iUserService.getUserByEmail(email);
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+    @PostMapping("/login") //[WORKING]
     public ResponseEntity<UserDetailsDTO> loginUser(@RequestBody UserCredentialsDTO userCred){
         UserDetailsDTO user = iUserService.loginUser(userCred);
         return new ResponseEntity<>(user, HttpStatus.OK);
