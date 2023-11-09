@@ -12,6 +12,6 @@ import lombok.Setter;
 public class UserRegDTO {
     private String email;
     private String password;
-    private String fname;
-    private String lname;
+    private String fullname;
+    private String phoneNumber;
 }

@@ -100,8 +100,8 @@ public class UserService implements IUserService {
         Users u = new Users();
         u.setEmail(userDetails.getEmail());
         u.setPassword(userDetails.getPassword());
-        u.setFname(userDetails.getFname());
-        u.setLname(userDetails.getLname());
+        u.setFullname(userDetails.getFullname());
+        u.setPhoneNumber(userDetails.getPhoneNumber());
         var userReg = userRepository.save(u);
         return modelMapper.map(userReg, UserDetailsDTO.class);
     }
@@ -114,8 +114,8 @@ public class UserService implements IUserService {
             Users userDetails = existingUser.get();
             userDetails.setEmail(udUser.getEmail());
             userDetails.setPassword(udUser.getPassword());
-            userDetails.setFname(udUser.getFname());
-            userDetails.setLname(udUser.getLname());
+            userDetails.setFullname(udUser.getFullname());
+            userDetails.setPhoneNumber(udUser.getPhoneNumber());
             userRepository.save(userDetails);
             userDetailsDTO = modelMapper.map(userDetails, UserDetailsDTO.class);
             return userDetailsDTO;

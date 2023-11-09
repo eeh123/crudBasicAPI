@@ -15,7 +15,7 @@ public class UserDetailsDTO {
     private int id;
     private String email;
     private String password;
-    private String fname;
-    private String lname;
+    private String fullname;
+    private String phoneNumber;
     private LocalDateTime date_registered;
 }
