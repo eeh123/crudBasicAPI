@@ -23,9 +23,14 @@ public interface UserRepository extends JpaRepository<Users, Integer> {
             nativeQuery = true)
     Optional<Users> checkUserCred(String email, String password);
 
-//    @Query(value = "SELECT * FROM tbl_users WHERE email = ?1",
-//            nativeQuery = true)
-//    Optional<Users> checkEmail(String email);
+    @Query(value = "SELECT * FROM tbl_users WHERE isLoggedIn = true",
+            nativeQuery = true)
+    Optional<Users> checkLoggedInUser();
+
+    @Modifying
+    @Query(value = "UPDATE tbl_users SET isLoggedIn = ?1 WHERE email = ?2",
+            nativeQuery = true)
+    void setIsLoggedIn(boolean isLoggedIn, String email);
 
     Optional<Users> findByEmail(String email);
 
@@ -33,10 +38,5 @@ public interface UserRepository extends JpaRepository<Users, Integer> {
     @Query(value = "UPDATE tbl_users SET status = 0 WHERE id = ?1",
             nativeQuery = true)
     void softDeleteUser(int id);
-
-    @Modifying
-    @Query(value = "UPDATE tbl_users SET isLoggedIn = ?1 WHERE email = ?2",
-            nativeQuery = true)
-    void setIsLoggedIn(boolean isLoggedIn, String email);
 }
 

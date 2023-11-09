@@ -70,6 +70,18 @@ public class UserService implements IUserService {
     }
 
     @Override
+    public UserDetailsDTO checkIsLoggedIn() {
+        UserDetailsDTO userDetailsDTO = new UserDetailsDTO();
+        Optional<Users> existingUser = userRepository.checkLoggedInUser();
+        if(existingUser.isPresent()) {
+            Users u = existingUser.get();
+            userDetailsDTO = modelMapper.map(u, UserDetailsDTO.class);
+            return userDetailsDTO;
+        }
+        throw new ResourceNotFoundException("No logged in User found");
+    }
+
+    @Override
     public UserDetailsDTO loginUser(UserCredentialsDTO userCred) {
         UserDetailsDTO userDetailsDTO = new UserDetailsDTO();
         UserRegDTO userRegDTO = new UserRegDTO();
