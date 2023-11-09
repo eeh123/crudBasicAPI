@@ -40,7 +40,7 @@ public class UserController {
         UserDetailsDTO user = iUserService.getUserById(id);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
-    @GetMapping("/getUserByEmail") //[WORKING]
+    @GetMapping("/getUserByEmail/{email}") //[WORKING]
     public ResponseEntity<UserDetailsDTO> getUserByEmail(@PathVariable String email){
         UserDetailsDTO user = iUserService.getUserByEmail(email);
         return new ResponseEntity<>(user, HttpStatus.OK);
